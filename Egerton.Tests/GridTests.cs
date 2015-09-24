@@ -17,10 +17,13 @@ namespace Egerton.Tests
 			Assert.AreEqual(productGrid.Cells.Length, expectedNumberOfCells);
 		}
 
-		[Test]
-		public void New_Grid_Has_Correct_Number_Of_Rows() {
-			ProductGrid productGrid = new ProductGrid(5);
-			Assert.AreEqual(productGrid.Cells.GetLength(0), 5);
+		[TestCase (1)]
+		[TestCase(57)]
+		[TestCase(1000)]
+		public void New_Grid_Has_Correct_Number_Of_Rows(int size) {
+			ProductGrid productGrid = new ProductGrid(size);
+			Assert.AreEqual(productGrid.Cells.GetLength(0), size);
 		}
+
 	}
 }
