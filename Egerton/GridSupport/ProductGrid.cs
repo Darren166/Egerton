@@ -21,7 +21,7 @@ namespace Egerton.GridSupport
 		private int gridSize;
 
 		private void SetHeaderCells() {
-			int[] primes = { 2, 3, 5, 7, 11 };
+			int[] primes = Primes.GenerateSequence(gridSize);
 			for (int index = 0; index < gridSize; index++)
 			{
 				if (primes.Length >= gridSize)
