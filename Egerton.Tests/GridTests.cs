@@ -1,6 +1,7 @@
 ﻿using Egerton.GridSupport;
 using NUnit.Framework;
 using System;
+using System.Linq;
 
 namespace Egerton.Tests
 {
@@ -33,6 +34,19 @@ namespace Egerton.Tests
 			
 			// Then the number of rows should equal the size
 			Assert.AreEqual(productGrid.Cells.GetLength(0), size);
+		}
+
+		[Test]
+		public void First_Row_In_Grid_Contains_Primes() {
+			// Given a grid of size 5
+			int[] primes = { 2, 3, 5, 7, 11 };
+			ProductGrid productGrid = new ProductGrid(5);
+			
+			// When the first row is extracted
+			int[] actualValues = Enumerable.Range(0,4).Select(index=>productGrid.Cells[0,index]).ToArray();
+			
+			// Then they should all be primes
+			Assert.AreEqual(actualValues, primes);
 		}
 
 	}
