@@ -31,7 +31,7 @@ namespace Egerton.Tests
 			// Given a size
 			// When a new grid is created
 			ProductGrid productGrid = new ProductGrid(size);
-			
+
 			// Then the number of rows should equal the size
 			Assert.AreEqual(productGrid.Cells.GetLength(0), size);
 		}
@@ -39,13 +39,14 @@ namespace Egerton.Tests
 		[TestCase(1, new int[] { 2 })]
 		[TestCase(15, new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 })]
 		[TestCase(20, new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71 })]
-		public void First_Row_In_Grid_Contains_Primes(int size, int[] expectedPrimes) {
+		public void First_Row_In_Grid_Contains_Primes(int size, int[] expectedPrimes)
+		{
 			// Given a grid
 			ProductGrid productGrid = new ProductGrid(size);
-			
+
 			// When the first row is extracted
-			int[] actualValues = Enumerable.Range(0,size).Select(index=>productGrid.Cells[0,index]).ToArray();
-			
+			int[] actualValues = Enumerable.Range(0, size).Select(index => productGrid.Cells[0, index]).ToArray();
+
 			// Then they should be sequential primes
 			Assert.AreEqual(actualValues, expectedPrimes);
 		}
@@ -63,6 +64,20 @@ namespace Egerton.Tests
 
 			// Then they should be sequential primes
 			Assert.AreEqual(actualValues, expectedPrimes);
+		}
+
+		[Test]
+		public void Non_Header_Cells_Are_Multiples_Of_Their_First_Row_And_Column()
+		{
+			// Given a grid
+			ProductGrid productGrid = new ProductGrid(5);
+
+			// When a particular cell is extracted
+			int actualCellValue = productGrid.Cells[3, 4];
+
+			// Then it is a product of the first column and row
+			int expectedValue = productGrid.Cells[0, 4] * productGrid.Cells[3, 0];
+			Assert.AreEqual(expectedValue, actualCellValue);
 		}
 
 	}
