@@ -49,5 +49,19 @@ namespace Egerton.Tests
 			Assert.AreEqual(actualValues, primes);
 		}
 
+		[Test]
+		public void First_Column_In_Size_5_Grid_Contains_Primes()
+		{
+			// Given a grid of size 5
+			int[] primes = { 2, 3, 5, 7, 11 };
+			ProductGrid productGrid = new ProductGrid(5);
+
+			// When the first row is extracted
+			int[] actualValues = Enumerable.Range(0, 5).Select(index => productGrid.Cells[index, 0]).ToArray();
+
+			// Then they should be sequential primes
+			Assert.AreEqual(actualValues, primes);
+		}
+
 	}
 }
