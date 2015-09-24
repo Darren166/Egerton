@@ -11,14 +11,15 @@ namespace Egerton
 	{
 		static void Main(string[] args)
 		{
-			int size = 1;
-			while (size > 0)
+			int size;
+			while (true)
 			{
 				Console.WriteLine();
 				Console.WriteLine("Type a size for the grid and press return, 0 or non number to exit");
 				int.TryParse(Console.ReadLine(), out size);
 				Console.WriteLine();
-	
+				if (size < 1) break;
+
 				var productGrid = new ProductGrid(size);
 				for (int row = 0; row < productGrid.Cells.GetLength(0); row++)
 				{
