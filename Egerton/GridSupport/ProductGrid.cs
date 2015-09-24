@@ -22,11 +22,12 @@ namespace Egerton.GridSupport
 
 		private void SetHeaderCells() {
 			int[] primes = { 2, 3, 5, 7, 11 };
-			for (int column = 0; column < gridSize; column++)
+			for (int index = 0; index < gridSize; index++)
 			{
 				if (primes.Length >= gridSize)
 				{
-					Cells[0, column] = primes[column];
+					Cells[0, index] = primes[index];
+					Cells[index, 0] = primes[index];
 				}
 			}
 		}
