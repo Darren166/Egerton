@@ -12,7 +12,7 @@ namespace Egerton
 		static void Main(string[] args)
 		{
 			int size = 1;
-			while (size != 0)
+			while (size > 0)
 			{
 				Console.WriteLine();
 				Console.WriteLine("Type a size for the grid and press return, 0 or non number to exit");
