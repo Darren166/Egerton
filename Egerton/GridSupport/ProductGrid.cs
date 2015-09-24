@@ -13,13 +13,7 @@ namespace Egerton.GridSupport
 			gridSize = size;
 			Cells = new int[size, size];
 			SetHeaderCells();
-			for (int row = 1; row < size; row++)
-			{
-				for (int column = 1; column < size; column++)
-				{
-					Cells[row, column] = Cells[row, 0] * Cells[0, column];
-				}
-			}
+			SetNonHeaderCells();
 		}
 
 		public int[,] Cells { get; set; }
@@ -34,6 +28,17 @@ namespace Egerton.GridSupport
 				{
 					Cells[0, index] = primes[index];
 					Cells[index, 0] = primes[index];
+				}
+			}
+		}
+
+		private void SetNonHeaderCells() 
+		{
+			for (int row = 1; row < gridSize; row++)
+			{
+				for (int column = 1; column < gridSize; column++)
+				{
+					Cells[row, column] = Cells[row, 0] * Cells[0, column];
 				}
 			}
 		}
