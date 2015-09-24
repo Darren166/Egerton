@@ -37,15 +37,15 @@ namespace Egerton.Tests
 		}
 
 		[Test]
-		public void First_Row_In_Grid_Contains_Primes() {
+		public void First_Row_In_Size_5_Grid_Contains_Primes() {
 			// Given a grid of size 5
 			int[] primes = { 2, 3, 5, 7, 11 };
 			ProductGrid productGrid = new ProductGrid(5);
 			
 			// When the first row is extracted
-			int[] actualValues = Enumerable.Range(0,4).Select(index=>productGrid.Cells[0,index]).ToArray();
+			int[] actualValues = Enumerable.Range(0,5).Select(index=>productGrid.Cells[0,index]).ToArray();
 			
-			// Then they should all be primes
+			// Then they should be sequential primes
 			Assert.AreEqual(actualValues, primes);
 		}
 
