@@ -10,18 +10,25 @@ namespace Egerton.GridSupport
 	{
 		public ProductGrid(int size)
 		{
+			gridSize = size;
 			Cells = new int[size, size];
+			SetHeaderCells();
 
+		}
+
+		public int[,] Cells { get; set; }
+
+		private int gridSize;
+
+		private void SetHeaderCells() {
 			int[] primes = { 2, 3, 5, 7, 11 };
-			for (int column = 0; column < size; column++)
+			for (int column = 0; column < gridSize; column++)
 			{
-				if (primes.Length >= size)
+				if (primes.Length >= gridSize)
 				{
 					Cells[0, column] = primes[column];
 				}
 			}
 		}
-
-		public int[,] Cells { get; set; }
 	}
 }
