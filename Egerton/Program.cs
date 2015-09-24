@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Egerton.GridSupport;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,16 @@ namespace Egerton
 	{
 		static void Main(string[] args)
 		{
+			var productGrid = new ProductGrid(5);
+			for (int row = 0; row < productGrid.Cells.GetLength(0); row++)
+			{
+				for (int column = 0; column < productGrid.Cells.GetLength(1); column++)
+				{
+					Console.Write(productGrid.Cells[row, column].ToString().PadLeft(5));
+				}
+				Console.WriteLine();
+			}
+			Console.ReadKey();
 		}
 	}
 }
