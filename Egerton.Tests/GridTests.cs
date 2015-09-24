@@ -66,17 +66,20 @@ namespace Egerton.Tests
 			Assert.AreEqual(actualValues, expectedPrimes);
 		}
 
-		[Test]
-		public void Non_Header_Cells_Are_Multiples_Of_Their_First_Row_And_Column()
+		[TestCase(5, 1, 3)]
+		[TestCase(15, 11, 3)]
+		[TestCase(15, 3, 11)]
+		[TestCase(55, 23, 33)]
+		public void Non_Header_Cells_Are_Multiples_Of_Their_First_Row_And_Column(int size, int rowIndex, int columnIndex)
 		{
 			// Given a grid
-			ProductGrid productGrid = new ProductGrid(5);
+			ProductGrid productGrid = new ProductGrid(size);
 
 			// When a particular cell is extracted
-			int actualCellValue = productGrid.Cells[3, 4];
+			int actualCellValue = productGrid.Cells[rowIndex, columnIndex];
 
 			// Then it is a product of the first column and row
-			int expectedValue = productGrid.Cells[0, 4] * productGrid.Cells[3, 0];
+			int expectedValue = productGrid.Cells[0, columnIndex] * productGrid.Cells[rowIndex, 0];
 			Assert.AreEqual(expectedValue, actualCellValue);
 		}
 
