@@ -36,21 +36,22 @@ namespace Egerton.Tests
 			Assert.AreEqual(productGrid.Cells.GetLength(0), size);
 		}
 
-		[Test]
-		public void First_Row_In_Size_5_Grid_Contains_Primes() {
-			// Given a grid of size 5
-			int[] primes = { 2, 3, 5, 7, 11 };
-			ProductGrid productGrid = new ProductGrid(5);
+		[TestCase(1, new int[] { 2 })]
+		[TestCase(15, new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47 })]
+		[TestCase(20, new int[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71 })]
+		public void First_Row_In_Grid_Contains_Primes(int size, int[] expectedPrimes) {
+			// Given a grid
+			ProductGrid productGrid = new ProductGrid(size);
 			
 			// When the first row is extracted
-			int[] actualValues = Enumerable.Range(0,5).Select(index=>productGrid.Cells[0,index]).ToArray();
+			int[] actualValues = Enumerable.Range(0,size).Select(index=>productGrid.Cells[0,index]).ToArray();
 			
 			// Then they should be sequential primes
-			Assert.AreEqual(actualValues, primes);
+			Assert.AreEqual(actualValues, expectedPrimes);
 		}
 
 		[Test]
-		public void First_Column_In_Size_5_Grid_Contains_Primes()
+		public void First_Column_In_Grid_Contains_Primes()
 		{
 			// Given a grid of size 5
 			int[] primes = { 2, 3, 5, 7, 11 };
