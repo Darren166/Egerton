@@ -13,7 +13,13 @@ namespace Egerton.GridSupport
 			gridSize = size;
 			Cells = new int[size, size];
 			SetHeaderCells();
-
+			for (int row = 1; row < size; row++)
+			{
+				for (int column = 1; column < size; column++)
+				{
+					Cells[row, column] = Cells[row, 0] * Cells[0, column];
+				}
+			}
 		}
 
 		public int[,] Cells { get; set; }
