@@ -10,7 +10,7 @@ namespace Egerton.GridSupport
 	{
 		public ProductGrid(int size)
 		{
-			Cells = new int[1, 1];
+			Cells = new int[size, size];
 		}
 
 		public int[,] Cells { get; set; }

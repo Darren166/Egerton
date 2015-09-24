@@ -7,11 +7,14 @@ namespace Egerton.Tests
 	[TestFixture]
 	public class GridTests
 	{
-		[Test]
-		public void New_Grid_Returns_Correct_Number_Of_Cells()
+		[TestCase(1, 1)]
+		[TestCase(3, 9)]
+		[TestCase(7, 49)]
+		[TestCase(10, 100)]
+		public void New_Grid_Returns_Correct_Number_Of_Cells(int size, int expectedNumberOfCells)
 		{
-			ProductGrid productGrid = new ProductGrid(5);
-			Assert.AreEqual(productGrid.Cells.Length, 25);
+			ProductGrid productGrid = new ProductGrid(size);
+			Assert.AreEqual(productGrid.Cells.Length, expectedNumberOfCells);
 		}
 	}
 }
